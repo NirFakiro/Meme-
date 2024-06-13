@@ -1,25 +1,22 @@
 'use strict'
 
-var gallery = []
+var gImg = []
 
-renderGallery()
 function renderGallery() {
   var elGallery = document.querySelector('.gallery')
-  for (var i = 2; i < 8; i++) {
-    gallery.push(`img/${i}.jpg`)
+  for (var i = 1; i < 19; i++) {
+    gImg.push({ id: `${i}`, url: `img/${i}.jpg`, keywords: ['funny', 'cat'] })
   }
   var strHTML = ''
-  gallery.forEach((img) => {
-    strHTML += `<img onclick="onImgSelect('${img}')" src="${img}" alt="Image ${img}" />`
+  gImg.forEach((img) => {
+    strHTML += `<img onclick="onImgSelect('${img.url}' ,'${img.id}')" src="${img.url}" alt="Image ${img}" />`
   })
+
   elGallery.innerHTML = strHTML
 }
 
-function onImgSelect(url) {
-  setImg(url)
-  renderMeme()
+function onImgSelect(url, id) {
+  setImg(url, id)
   var elMemeContainer = document.querySelector('.meme-container')
-  var elGallery = document.querySelector('.gallery')
-  elMemeContainer.style.display = 'block'
-  elGallery.style.display = 'none'
+  elMemeContainer.style.display = 'flex'
 }
