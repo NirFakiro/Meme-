@@ -4,8 +4,8 @@ var gImg = []
 
 function renderGallery() {
   var elGallery = document.querySelector('.gallery')
-  for (var i = 1; i < 19; i++) {
-    gImg.push({ id: `${i}`, url: `img/${i}.jpg`, keywords: ['funny', 'cat'] })
+  for (var i = 2; i < 18; i++) {
+    gImg.push({ id: `${i}`, url: `img/${i}.jpg` })
   }
   var strHTML = ''
   gImg.forEach((img) => {
@@ -17,6 +17,17 @@ function renderGallery() {
 
 function onImgSelect(url, id) {
   setImg(url, id)
+
   var elMemeContainer = document.querySelector('.meme-container')
   elMemeContainer.style.display = 'flex'
+}
+
+function showMyMemes() {
+  var elMemeContainer = document.querySelector('.meme-container')
+  var elGallery = document.querySelector('.gallery')
+  var elMyMemes = document.querySelector('.my-memes')
+  elMemeContainer.style.display = 'none'
+  elGallery.style.display = 'none'
+  elMyMemes.classList.remove('hidden')
+  renderMeme()
 }

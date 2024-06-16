@@ -1,0 +1,25 @@
+/* ONLY MOBILE */
+
+@media (max-width: 850px) {
+  .main-layout {
+    width: 500px;
+    overflow-x: hidden;
+  }
+  header {
+    width: 500px;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  .meme-container {
+    display: flex;
+    flex-direction: column;
+  }
+  canvas {
+    width: 500px;
+    height: 400px;
+  }
+  .edit-meme {
+    width: 500px;
+    height: 450px;
+  }
+}

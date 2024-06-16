@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/mq.css" />
     <title>Meme</title>
   </head>
   <body class="main-layout" onload="onInit()">
@@ -11,41 +12,137 @@
       <h1>Meme Generator</h1>
       <nav>
         <button onclick="onShowGallery()" class="btn-gallery">Gallery</button>
-        <button class="btn-save">Save</button>
+        <button onclick="onShowMymeme()" class="btn-my-memes">My memes</button>
+        <button onclick="onNewCanvs()" class="btn-new-canvas">New</button>
       </nav>
     </header>
     <section class="meme-container">
-      <canvas class="canvas" width="450" height="450"></canvas>
+      <canvas
+        class="canvas"
+        width="450"
+        height="450"
+        onclick="onCanvasClick(event)"
+      ></canvas>
       <div class="edit-meme">
-        <label for="textInput">Text:</label>
-        <input oninput="setLineTxt()" type="text" id="textInput" />
+        <div class="text-container">
+          <input
+            oninput="setLineTxt(0)"
+            type="text"
+            class="top-text"
+            placeholder="Add top text here"
+          />
+          <div class="new-line hidden">
+            <input
+              oninput="setLineTxt(1)"
+              type="text"
+              class="bottom-text"
+              placeholder="Add bottom text here"
+            />
+          </div>
+          <button
+            class="switch-btn hidden"
+            onclick="OnSwitchLine(gMeme.selcetedLineIdx)"
+          >
+            ↕
+          </button>
+          <button class="delete-btn hidden" onclick="onDeletLine()">
+            delet
+          </button>
 
-        <button onclick="setLineTxt()">Ok</button>
-        <label class="fill-color" for="color">Color</label>
-        <input
-          type="color"
-          title="fill-color"
-          class="fill-color"
-          value="#ffffff"
-          name="fill-color"
-          onchange="onSetFillColor(this.value)"
-        />
-        <button onclick="onNewSize()" class="font-btn">A +</button>
-        <a
-          class="btn"
-          href="#"
-          onclick="onDownloadImg(this)"
-          download="my-img.jpg"
-        >
-          Download
-        </a>
+          <button class="add-btn" onclick="addLine(gMeme.selcetedLineIdx)">
+            +
+          </button>
+        </div>
+        <div class="controller-container">
+          <button onclick="onIncrease(gMeme.selcetedLineIdx)" class="font-btn">
+            A +
+          </button>
+          <button onclick="onDecrease(gMeme.selcetedLineIdx)" class="font-btn">
+            A -
+          </button>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="txt-pos-svg"
+            onclick="onSetTextLeft(gMeme.selcetedLineIdx)"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="txt-pos-svg"
+            onclick="onSetTextRight(gMeme.selcetedLineIdx)"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="txt-pos-svg"
+            onclick="onSetTextCenter(gMeme.selcetedLineIdx)"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+
+          <select onchange="onSetFontFamily(gMeme.selcetedLineIdx,this.value)">
+            <option value="Impact">Impact</option>
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Coursive">Coursive</option>
+            <option value="fantasy">fantasy</option>
+            <option value="sens-serif">sens-serif</option>
+            <option value="serif">serif</option>
+            <option value="monospace">monospace</option>
+          </select>
+          <input
+            type="color"
+            title="Color"
+            class="fill-color"
+            name="fill-color"
+            placeholder="4"
+            oninput="onSetFillColor(this.value,gMeme.selcetedLineIdx)"
+          />
+        </div>
+        <section class="download-container">
+          <button onclick="downloadCanvas()" class="btn-save">Save</button>
+          <button onclick="download()" class="btn-downloud">download</button>
+        </section>
       </div>
     </section>
+    <section class="my-memes hidden"></section>
     <section class="gallery"></section>
     <section class="saved"></section>
 
+    <script src="js/util.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
+    <script src="js/domnload.js"></script>
     <script src="js/galleryController.js"></script>
   </body>
 </html>

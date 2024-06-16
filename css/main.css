@@ -1,69 +1,202 @@
 * {
   box-sizing: border-box;
 }
-
-h1 {
+.main-layout {
+  background-color: #d3f9d8;
+  width: 850px;
+  margin: 10px auto;
   font-family: sans-serif;
 }
+
+canvas {
+  border-radius: 15px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
-
   align-items: center;
-  background-color: rgb(128, 163, 240);
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-bottom: 30px;
-}
-.btn-save,
-.btn-gallery,
-a {
-  background-color: #4c53af;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
 
-  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+nav button {
+  background-color: white;
+  color: #4caf50;
+  border: 2px solid #4caf50;
+  border-radius: 4px;
+  padding: 10px 20px;
   cursor: pointer;
-  border-radius: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav button:hover {
+  background-color: #45a049;
+  color: white;
 }
 
 .meme-container {
   display: flex;
-  justify-content: space-around;
-
-  background-color: lightseagreen;
-  border-radius: 15px;
+  gap: 5px;
 }
 
 .edit-meme {
-  display: flex;
-  flex-direction: column;
+  border-radius: 15px;
   background-color: #4caf50;
-  gap: 15px;
+  padding: 10px 20px;
 }
 
-canvas {
-  border: 2px solid rgb(80, 76, 201);
-  border-radius: 15px;
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-container input {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.text-container button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 80%;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.text-container button:hover {
+  background-color: #45a049;
+}
+
+.text-container .new-line {
+  width: 100%;
+  margin-left: 65px;
+}
+
+.controller-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.font-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.font-btn:hover {
+  background-color: #45a049;
+}
+
+.txt-pos-svg {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.txt-pos-svg:hover {
+  fill: #45a049;
+}
+
+select {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .fill-color {
   width: 40px;
-  border-radius: 10px;
-  background-color: #4c53af;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
 }
-.gallery {
+
+.download-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-container button,
+.download-container label {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.download-container button:hover,
+.download-container label:hover {
+  background-color: #45a049;
+}
+
+.gallery,
+.my-memes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
 }
-.gallery img {
+
+.gallery img,
+.my-memes img {
   width: auto;
-  height: 150px;
+  height: 200px;
   justify-self: center;
   border-radius: 8px;
   cursor: pointer;
@@ -73,14 +206,6 @@ canvas {
   display: none;
 }
 
-.font-btn {
-  width: 65px;
-  height: 35px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #525155;
-  color: white;
-  border: none;
-  border-radius: 8px;
+.hidden {
+  display: none;
 }
