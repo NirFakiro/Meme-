@@ -65,7 +65,6 @@ function setLineTxt(idx) {
 }
 
 function setImg(url, id) {
-  console.log('id:', id)
   //MODAL//
   gMeme.selcetedImgId = id
   gImg[id].url = url
@@ -90,7 +89,7 @@ function getNewColor(color, idx) {
 function addLine(idx) {
   if (gMeme.lines.length === 2) return
 
-  let posX = idx === 0 ? 150 : 150
+  let posX = 150
   let posY = idx === 0 ? 350 : 50
   let currIdx = idx === 0 ? 1 : 0
 
@@ -103,7 +102,7 @@ function addLine(idx) {
     posX: posX,
     posY: posY,
   }
-
+  gMeme.selcetedLineIdx = currIdx
   gMeme.lines.push(newLine)
   showLine()
   selectedForEdit(currIdx)

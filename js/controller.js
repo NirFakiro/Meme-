@@ -4,16 +4,12 @@ var elCanvas = document.querySelector('.canvas')
 var gCtx = elCanvas.getContext('2d')
 
 function onInit() {
+  renderGallery()
   renderMeme()
 }
 
 function renderMeme() {
-  renderGallery()
   getMeme()
-}
-
-function onNewCanvs() {
-  renderMeme()
 }
 
 function onShowGallery() {
@@ -80,7 +76,7 @@ function onCanvasClick(ev) {
       gMeme.selcetedLineIdx = idx
 
       //CANVS//
-      console.log('idx from click:', idx)
+
       selectedForEdit(idx)
     }
   })
