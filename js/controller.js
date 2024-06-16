@@ -176,12 +176,12 @@ function moveTextRight() {
 
 function onDeletLine(idx) {
   var deletedIdx = gMeme.selcetedLineIdx
-  console.log('deletedIdx:', deletedIdx)
+
   //MADAL//
   var lines = gMeme.lines
   lines.splice(deletedIdx, 1)
   var currIdx = deletedIdx === 0 ? 1 : 0
-  console.log('currIdx:', currIdx)
+
   gMeme.selcetedLineIdx = currIdx
   console.log((gMeme.selcetedLineIdx = currIdx))
 
@@ -200,7 +200,7 @@ function onDeletLine(idx) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  elNewBtn = document.querySelector('.btn-new-canvas')
+  var elNewBtn = document.querySelector('.btn-new-canvas')
 
   elNewBtn.addEventListener('click', function () {
     location.reload()
